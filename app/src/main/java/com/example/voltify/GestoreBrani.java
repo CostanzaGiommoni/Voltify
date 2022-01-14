@@ -7,8 +7,14 @@ public class GestoreBrani {
     public GestoreBrani(){
         ListaBrani=new ArrayList<Brani>();
     }
-    public void addBrani(){
-
+    public void addBrani(String titolo, int durata){
+        Brani b=new Brani(titolo,durata);
+        ListaBrani.add(b);
     }
-
+    public void ListaBrani(){
+        StringBuilder stBui= new StringBuilder();
+        for(Brani brV : ListaBrani){
+            stBui.append(brV.toString());
+        }
+    }
 }

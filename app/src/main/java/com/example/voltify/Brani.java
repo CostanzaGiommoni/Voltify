@@ -43,7 +43,8 @@ public class Brani {
 
     private Date datacreazione;
 
-    public Brani(String titolo){
+    public Brani(String titolo,int durata){
         this.titolo=titolo;
+        this.durata=durata;
     }
 }
