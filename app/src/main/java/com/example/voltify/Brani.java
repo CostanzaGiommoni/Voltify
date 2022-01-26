@@ -51,12 +51,10 @@ public class Brani {
 
     @Override
     public String toString() {      //Stringa per ogni brano
-        return "Brani{" +
-                "titolo='" + titolo + '\'' +
+        return  "titolo='" + titolo  +
                 ", durata=" + durata +
-                ", autore='" + autore + '\'' +
+                ", autore='" + autore +
                 ", datacreazione=" + datacreazione +
-                ", genere='" + genere + '\'' +
-                '}';
+                ", genere='" + genere + "\n";
     }
 }

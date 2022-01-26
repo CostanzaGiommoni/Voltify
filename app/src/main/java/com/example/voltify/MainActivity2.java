@@ -12,7 +12,7 @@ Intent i;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
-        i=getIntent(); //Si prende l'intent dell'altra activity per dichiararlo
+        i=getIntent();                                      //Si prende l'intent dell'altra activity per dichiararlo
         txtT=(TextView)findViewById(R.id.txtT);
         txtT.setText(i.getStringExtra("messaggio"));
     }

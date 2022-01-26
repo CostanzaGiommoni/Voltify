@@ -22,11 +22,10 @@ Button btn2Inserisci;           //Invia
 EditText txtTitolo;             //Titolo
 EditText txt2Titolo;            //Durata
 GestoreBrani gb;                //Classe Gestore Brani
-TextView txtview;
 EditText txt3Titolo;
 EditText txt4Titolo;
 Spinner spinner;
-    private Object DateFormat;
+TextView txt;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,14 +34,14 @@ Spinner spinner;
         btnInserisci=(Button)findViewById(R.id.btnInserisci); // findviewbyId Collegano l'elemento grafico a java
         btn2Inserisci=(Button)findViewById(R.id.btn2Inserisci);
         gb=new GestoreBrani();
+        txt=(TextView)findViewById(R.id.txt);
         txtTitolo=(EditText)findViewById(R.id.txtTitolo);
         txt2Titolo=(EditText)findViewById(R.id.txt2Titolo);
         txt3Titolo=(EditText)findViewById(R.id.txt3Titolo);
-        txt4Titolo=(EditText)findViewById((R.id.txt4Titolo);
-        TextView txtview=(TextView)findViewById(R.id.txtView);
-        Spinner spinner=(Spinner)findViewById(R.id.spinner);
+        txt4Titolo=(EditText)findViewById(R.id.txt4Titolo);
+        spinner=(Spinner)findViewById(R.id.spinner);
         /*Convertire una stringa in una data, stabiliamo un formato di data*/
-        DateFormat format=new SimpleDateFormat("MMMM d,yyyy",Locale.ENGLISH);
+        DateFormat format=new SimpleDateFormat("dd/MM/yyyy");  //SimpleDateFormat è una classe per rendere la data una stringa
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, //Addatta gli array
                 R.array.genere, android.R.layout.simple_spinner_item); //Prende l'array genere e layout come adattarlo allo spinner
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item); //Come vedere la lista sullo spinner
@@ -52,7 +51,7 @@ Spinner spinner;
             public void onClick(View view) {        //Metterle i dati dell'interfaccia in un brano
                 Date data=null;
                 try{
-                    data=format.parse(txt4Titolo.getText().toString());
+                    data=format.parse(txt4Titolo.getText().toString());         //Per eventuali errori della data
                 }catch (ParseException e){
                     e.printStackTrace();
                 }
@@ -63,9 +62,10 @@ Spinner spinner;
         btn2Inserisci.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i=new Intent(getApplicationContext(),MainActivity2.class); //SecondaActivity
-                i.putExtra("Messaggio",gb.ListaBrani());
-                startActivity(i);
+                StringBuilder s= gb.ListaBrani();
+                Intent i=new Intent(getApplicationContext(),MainActivity2.class); //SecondaActivity che viene lanciata dopo la stringa che visualizza la prima.
+                i.putExtra("Messaggio", s.toString());  //Aggiunge informazioni, mette nell'intent la stringa che abbiamo ricavato.
+                startActivity(i); //Parte la seconda activity
             }
         });
     }

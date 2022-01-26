@@ -12,12 +12,11 @@ public class GestoreBrani {
         Brani b=new Brani(titolo,durata,autore,datacreazione,genere);
         ListaBrani.add(b);
     }
-    public String ListaBrani(){
-        StringBuilder stBui= new StringBuilder();   //Creare una sola stringa con dentro le informazioni di tutti i brani. Fa concatenare le singole stringhe dei brani.
+    public StringBuilder ListaBrani(){
+        StringBuilder stBui= new StringBuilder(1200);   //Creare una sola stringa con dentro le informazioni di tutti i brani. Fa concatenare le singole stringhe dei brani.
         for(Brani brV : ListaBrani){
-            stBui.append(brV.toString());
+            stBui.append(brV.toString());           //For-elemento di tipo brano, va a leggere la lista.Oppure stBui.append(stBui.getTitolo().toString()+"-")  stBui.append(stBui.getAutore()+"\n"),
         }
-        String string=stBui.toString();
-        return string;
+        return stBui;
     }
 }
